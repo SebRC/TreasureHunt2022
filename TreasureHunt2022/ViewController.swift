@@ -22,7 +22,14 @@ class ViewController: UIViewController {
     
     var currentStepIndex = 0
     
-    var steps = [Step(answer: "Musik", location: Location(name: "Office", upper: false)), Step(answer: "Saka", location: Location(name: "Hobby Room", upper: true))]
+    var steps = [Step(answer: "Delicious", location: Location(name: "Bedroom", upper: true)), // Cola
+                 Step(answer: "Dyrt", location: Location(name: "Kitchen", upper: false)), // Gifler
+                 Step(answer: "Instagram", location: Location(name: "Hobby Room", upper: true)), // Tegning/Trøje
+                 Step(answer: "Sprødt", location: Location(name: "Gaming Room", upper: false)), // Chips
+                 Step(answer: "Blødt", location: Location(name: "Living Room", upper: true)), // Vafler
+                 Step(answer: "Toner", location: Location(name: "Office", upper: false)), // Airpods
+                 Step(answer: "Smooth", location: Location(name: "Bathroom", upper: false))] // Nutella
+    
     var locationMap: [String: UIView] = [:]
     
     override func viewDidLoad() {
@@ -79,7 +86,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func nextStepPressed(_ sender: Any) {
-        createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40])
+        createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
         if let viewWithTag = self.view.viewWithTag(100) {
                 viewWithTag.removeFromSuperview()
             }
