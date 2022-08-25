@@ -407,6 +407,7 @@
                     </view>
                     <connections>
                         <outlet property="answerTextField" destination="27k-sM-lHb" id="h13-zU-VCF"/>
+                        <outlet property="balconyStackView" destination="Yj1-Gu-wI3" id="WBW-ER-8PV"/>
                         <outlet property="bathroomView" destination="uwa-Fi-Da4" id="5A7-dn-FtH"/>
                         <outlet property="bedroomView" destination="i91-WM-UcY" id="DhI-ny-OIp"/>
                         <outlet property="gamingRoomView" destination="6Xe-rq-9s6" id="CjR-kV-wQB"/>

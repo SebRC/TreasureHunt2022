@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bedroomView: UIView!
     @IBOutlet weak var nextStepButton: UIButton!
     @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var balconyStackView: UIStackView!
     
     var currentStepIndex = 0
     
@@ -36,6 +37,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationMap = ["Bathroom": bathroomView, "Kitchen": kitchenView, "Office": officeView, "Gaming Room": gamingRoomView, "Living Room": livingRoomView, "Hobby Room": hobbyRoomView, "Bedroom": bedroomView]
+        for room in locationMap.values {
+            room.layer.cornerRadius = 5
+            for detail in room.subviews {
+                detail.layer.cornerRadius = 2
+            }
+        }
+        
+        for balcony in balconyStackView.subviews {
+            balcony.layer.cornerRadius = 5
+        }
         
         advanceToNextStep(step: steps[currentStepIndex])
     }
