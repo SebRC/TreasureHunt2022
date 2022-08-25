@@ -42,8 +42,8 @@ class ViewController: UIViewController {
     
     private func advanceToNextStep(step: Step) {
         let room = locationMap[step.location.name]
-        room?.layer.borderColor = UIColor.systemYellow.cgColor
-        room?.layer.borderWidth = 5
+        //room?.layer.borderColor = UIColor.systemYellow.cgColor
+        //room?.layer.borderWidth = 5
         let stackView = step.location.upper ? upperStackView : lowerStackView
         let x = room!.frame.minX + (room!.frame.size.width / 2) + 5
         let y = stackView!.frame.minY + (room!.frame.size.height / 2) - 15
@@ -99,10 +99,10 @@ class ViewController: UIViewController {
     @IBAction func nextStepPressed(_ sender: Any) {
         
         let step = steps[currentStepIndex]
-        if(answerTextField.text?.lowercased() == step.answer.lowercased()) {
+        if(true || answerTextField.text?.lowercased() == step.answer.lowercased()) {
             createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
             let room = locationMap[step.location.name]
-            room?.layer.borderColor = UIColor.systemGreen.cgColor
+            //room?.layer.borderColor = UIColor.systemGreen.cgColor
             currentStepIndex = currentStepIndex + 1
             if(currentStepIndex > steps.count - 1) {
                 currentStepIndex = 0
