@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var hobbyRoomView: UIView!
     @IBOutlet weak var bedroomView: UIView!
     @IBOutlet weak var nextStepButton: UIButton!
+    @IBOutlet weak var answerTextField: UITextField!
     
     var currentStepIndex = 0
     
@@ -61,7 +62,6 @@ class ViewController: UIViewController {
             view.bringSubviewToFront(presentView)
             addAnimation(circleView: presentView)
         }
-       
     }
     
     private func addAnimation(circleView: UIView) {
@@ -97,15 +97,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction func nextStepPressed(_ sender: Any) {
-        createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
+        
         let step = steps[currentStepIndex]
-        let room = locationMap[step.location.name]
-        room?.layer.borderColor = UIColor.systemGreen.cgColor
-        currentStepIndex = currentStepIndex + 1
-        if(currentStepIndex > steps.count - 1) {
-            currentStepIndex = 0
+        if(answerTextField.text?.lowercased() == step.answer.lowercased()) {
+            createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
+            let room = locationMap[step.location.name]
+            room?.layer.borderColor = UIColor.systemGreen.cgColor
+            currentStepIndex = currentStepIndex + 1
+            if(currentStepIndex > steps.count - 1) {
+                currentStepIndex = 0
+            }
+            advanceToNextStep(step: steps[currentStepIndex])
         }
-        advanceToNextStep(step: steps[currentStepIndex])
     }
 }
 
