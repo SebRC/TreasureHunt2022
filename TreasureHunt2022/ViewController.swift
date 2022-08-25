@@ -44,13 +44,24 @@ class ViewController: UIViewController {
         room?.layer.borderColor = UIColor.systemYellow.cgColor
         room?.layer.borderWidth = 5
         let stackView = step.location.upper ? upperStackView : lowerStackView
-        let circleView = UILabel(frame: CGRect(x: room!.frame.minX + (room!.frame.size.width / 2) + 5, y: stackView!.frame.minY + (room!.frame.size.height / 2) - 15 , width: 30, height: 30))
-        circleView.tag = 100
-        circleView.text = "🎁"
-        circleView.font = UIFont.systemFont(ofSize: CGFloat(30))
-        view.addSubview(circleView)
-        view.bringSubviewToFront(circleView)
-        addAnimation(circleView: circleView)
+        let x = room!.frame.minX + (room!.frame.size.width / 2) + 5
+        let y = stackView!.frame.minY + (room!.frame.size.height / 2) - 15
+        
+        if let viewWithTag = self.view.viewWithTag(100) {
+            UIView.animate(withDuration: 1.5, animations: {
+                viewWithTag.frame = CGRect(x: x, y: y, width: 30, height: 30)
+                })
+            }
+        else {
+            let presentView = UILabel(frame: CGRect(x: x, y: y , width: 30, height: 30))
+            presentView.tag = 100
+            presentView.text = "🎁"
+            presentView.font = UIFont.systemFont(ofSize: CGFloat(30))
+            view.addSubview(presentView)
+            view.bringSubviewToFront(presentView)
+            addAnimation(circleView: presentView)
+        }
+       
     }
     
     private func addAnimation(circleView: UIView) {
@@ -87,9 +98,6 @@ class ViewController: UIViewController {
 
     @IBAction func nextStepPressed(_ sender: Any) {
         createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
-        if let viewWithTag = self.view.viewWithTag(100) {
-                viewWithTag.removeFromSuperview()
-            }
         let step = steps[currentStepIndex]
         let room = locationMap[step.location.name]
         room?.layer.borderColor = UIColor.systemGreen.cgColor
