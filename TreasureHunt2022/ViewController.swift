@@ -110,15 +110,20 @@ class ViewController: UIViewController {
     @IBAction func nextStepPressed(_ sender: Any) {
         
         let step = steps[currentStepIndex]
-        if(true || answerTextField.text?.lowercased() == step.answer.lowercased()) {
+        if(answerTextField.text?.lowercased() == step.answer.lowercased()) {
             createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
-            let room = locationMap[step.location.name]
-            //room?.layer.borderColor = UIColor.systemGreen.cgColor
             currentStepIndex = currentStepIndex + 1
             if(currentStepIndex > steps.count - 1) {
                 currentStepIndex = 0
+                if let viewWithTag = self.view.viewWithTag(100) {
+                    UIView.animate(withDuration: 1.5, animations: {
+                        viewWithTag.alpha = 0.0
+                        })
+                    }
             }
-            advanceToNextStep(step: steps[currentStepIndex])
+            else {
+                advanceToNextStep(step: steps[currentStepIndex])
+            }
         }
     }
 }
