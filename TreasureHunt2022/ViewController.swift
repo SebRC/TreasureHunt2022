@@ -111,7 +111,7 @@ class ViewController: UIViewController {
     @IBAction func nextStepPressed(_ sender: Any) {
         
         let step = steps[currentStepIndex]
-        if(true || answerTextField.text?.lowercased() == step.answer.lowercased()) {
+        if(answerTextField.text?.lowercased() == step.answer.lowercased()) {
             createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
             currentStepIndex = currentStepIndex + 1
             if(currentStepIndex > steps.count - 1) {
