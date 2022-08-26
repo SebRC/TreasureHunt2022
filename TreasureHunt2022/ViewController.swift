@@ -24,13 +24,14 @@ class ViewController: UIViewController {
     
     var currentStepIndex = 0
     
-    var steps = [Step(answer: "Delicious", location: Location(name: "Bedroom", upper: true)), // Cola
-                 Step(answer: "Dyrt", location: Location(name: "Kitchen", upper: false)), // Gifler
-                 Step(answer: "Instagram", location: Location(name: "Hobby Room", upper: true)), // Tegning/Trøje
-                 Step(answer: "Sprødt", location: Location(name: "Gaming Room", upper: false)), // Chips
-                 Step(answer: "Blødt", location: Location(name: "Living Room", upper: true)), // Vafler
-                 Step(answer: "Toner", location: Location(name: "Office", upper: false)), // Airpods
-                 Step(answer: "Smooth", location: Location(name: "Bathroom", upper: false))] // Nutella
+    var steps = [Step(answer: "Smooth", location: Location(name: "Bedroom", upper: true)), // Nutella: I skabet
+                 Step(answer: "Sjov", location: Location(name: "Living Room", upper: true)), // Tegning/Trøje: I lampeskærm
+                 Step(answer: "Blød", location: Location(name: "Gaming Room", upper: false)), // Vafler: I skab med hylder
+                 Step(answer: "Forfriskende", location: Location(name: "Kitchen", upper: false)), // Cola: Over køleskab
+                 Step(answer: "Sød", location: Location(name: "Bathroom", upper: false)), // Gifler: Over skabet
+                 Step(answer: "Sprød", location: Location(name: "Hobby Room", upper: true)), // Chips: Bag jakker
+                 Step(answer: "Nice", location: Location(name: "Office", upper: false)) // Airpods: Oven på skabe
+                 ]
     
     var locationMap: [String: UIView] = [:]
     
@@ -110,7 +111,7 @@ class ViewController: UIViewController {
     @IBAction func nextStepPressed(_ sender: Any) {
         
         let step = steps[currentStepIndex]
-        if(answerTextField.text?.lowercased() == step.answer.lowercased()) {
+        if(true || answerTextField.text?.lowercased() == step.answer.lowercased()) {
             createEmojis(emojis: ["🇩🇰": 50, "✨": 30, "🎁": 40, "🥳": 50])
             currentStepIndex = currentStepIndex + 1
             if(currentStepIndex > steps.count - 1) {
